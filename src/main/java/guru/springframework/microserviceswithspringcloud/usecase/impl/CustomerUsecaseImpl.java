@@ -1,6 +1,6 @@
 package guru.springframework.microserviceswithspringcloud.usecase.impl;
 
-import guru.springframework.microserviceswithspringcloud.model.CustomerDTO;
+import guru.springframework.microserviceswithspringcloud.entrypoint.CustomerDTO;
 import guru.springframework.microserviceswithspringcloud.usecase.CustomerCrudOperations;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

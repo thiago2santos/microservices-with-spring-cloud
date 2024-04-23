@@ -1,6 +1,6 @@
 package guru.springframework.microserviceswithspringcloud.usecase;
 
-import guru.springframework.microserviceswithspringcloud.model.CustomerDTO;
+import guru.springframework.microserviceswithspringcloud.entrypoint.CustomerDTO;
 
 import java.util.UUID;
 
