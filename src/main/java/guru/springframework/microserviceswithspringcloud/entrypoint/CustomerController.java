@@ -6,12 +6,15 @@ import guru.springframework.microserviceswithspringcloud.usecase.impl.CustomerUs
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.NotNull;
 import java.util.UUID;
 
-@RequestMapping("/api/v1")
+@Validated
 @RestController
+@RequestMapping("/api/v1")
 public class CustomerController {
 
     private final CustomerCrudOperations customerService;
@@ -21,8 +24,8 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @GetMapping("/customers/{uuid}")
-    public ResponseEntity<CustomerDTO> getById(@PathVariable("uuid") UUID uuid) {
+    @GetMapping(value = {"/customers/{uuid}", "/customers/"})
+    public ResponseEntity<CustomerDTO> getById(@PathVariable("uuid") @NotNull UUID uuid) {
         CustomerDTO customer = customerService.getById(uuid);
         return ResponseEntity.ok(customer);
     }
