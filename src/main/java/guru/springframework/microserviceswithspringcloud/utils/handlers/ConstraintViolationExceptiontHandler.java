@@ -1,4 +1,4 @@
-package guru.springframework.microserviceswithspringcloud.utils.exception.handlers;
+package guru.springframework.microserviceswithspringcloud.utils.handlers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,4 +1,4 @@
-package guru.springframework.microserviceswithspringcloud.utils.exception.handlers;
+package guru.springframework.microserviceswithspringcloud.utils.handlers;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
-public class BadRequestHandler {
+public class BadRequestExceptionHandler {
 
     @ExceptionHandler(MissingPathVariableException.class)
     public ResponseEntity handleMissingPathVariableException(MissingPathVariableException e) {
