@@ -2,6 +2,7 @@ package guru.springframework.microserviceswithspringcloud.entrypoint.customer;
 
 import guru.springframework.microserviceswithspringcloud.usecase.CustomerCrudOperations;
 import guru.springframework.microserviceswithspringcloud.usecase.impl.CustomerUsecaseImpl;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.NoArgsConstructor;
 import org.springframework.http.HttpHeaders;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Validated
 @RestController
-@NoArgsConstructor(force = true)
+@Tag(name = "Customer")
 @RequestMapping("/api/v1")
 public class CreateCustomerController {
 

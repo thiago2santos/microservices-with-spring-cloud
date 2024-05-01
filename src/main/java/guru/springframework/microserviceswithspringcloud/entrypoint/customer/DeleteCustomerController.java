@@ -2,6 +2,7 @@ package guru.springframework.microserviceswithspringcloud.entrypoint.customer;
 
 import guru.springframework.microserviceswithspringcloud.usecase.CustomerCrudOperations;
 import guru.springframework.microserviceswithspringcloud.usecase.impl.CustomerUsecaseImpl;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
@@ -11,7 +12,7 @@ import java.util.UUID;
 
 @Validated
 @RestController
-@NoArgsConstructor(force = true)
+@Tag(name = "Customer")
 @RequestMapping("/api/v1")
 public class DeleteCustomerController  {
 
