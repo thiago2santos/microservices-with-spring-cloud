@@ -13,7 +13,7 @@ import java.util.UUID;
 @RestController
 @Tag(name = "Customer")
 @RequestMapping("/api/v1")
-public class DeleteCustomerController  {
+public class DeleteCustomerController {
 
     private final CustomerCrudOperations customerService;
 
@@ -21,9 +21,10 @@ public class DeleteCustomerController  {
         this.customerService = customerService;
     }
 
-    @DeleteMapping("/customers/{uuid}")
+    @DeleteMapping(value = {"/customers/{uuid}", "/customers/"})
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable("uuid") UUID uuid) {
+
         customerService.delete(uuid);
     }
 

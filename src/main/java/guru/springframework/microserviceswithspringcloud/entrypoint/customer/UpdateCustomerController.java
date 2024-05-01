@@ -4,7 +4,6 @@ import guru.springframework.microserviceswithspringcloud.usecase.CustomerCrudOpe
 import guru.springframework.microserviceswithspringcloud.usecase.impl.CustomerUsecaseImpl;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
-import lombok.NoArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +22,7 @@ public class UpdateCustomerController {
         this.customerService = customerService;
     }
 
-    @PutMapping("/customers/{uuid}")
+    @PutMapping(value = {"/customers/{uuid}", "/customers/"})
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@RequestBody @Valid CustomerDTO customerDTO, @PathVariable("uuid") UUID uuid) {
         customerDTO.setUuid(uuid);

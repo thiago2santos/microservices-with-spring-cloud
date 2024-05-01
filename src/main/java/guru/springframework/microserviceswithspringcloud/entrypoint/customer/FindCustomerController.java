@@ -4,7 +4,6 @@ import guru.springframework.microserviceswithspringcloud.usecase.CustomerCrudOpe
 import guru.springframework.microserviceswithspringcloud.usecase.impl.CustomerUsecaseImpl;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.constraints.NotNull;
-import lombok.NoArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
