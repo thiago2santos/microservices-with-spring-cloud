@@ -1,6 +1,6 @@
 package guru.springframework.microserviceswithspringcloud.utils.mappers;
 
-import guru.springframework.microserviceswithspringcloud.entrypoint.CustomerDTO;
+import guru.springframework.microserviceswithspringcloud.entrypoint.customer.CustomerDTO;
 import guru.springframework.microserviceswithspringcloud.model.Customer;
 import org.mapstruct.Mapper;
 

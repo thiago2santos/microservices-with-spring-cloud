@@ -1,6 +1,6 @@
 package guru.springframework.microserviceswithspringcloud.usecase.impl;
 
-import guru.springframework.microserviceswithspringcloud.entrypoint.CustomerDTO;
+import guru.springframework.microserviceswithspringcloud.entrypoint.customer.CustomerDTO;
 import guru.springframework.microserviceswithspringcloud.model.Customer;
 import guru.springframework.microserviceswithspringcloud.usecase.CustomerCrudOperations;
 import guru.springframework.microserviceswithspringcloud.utils.mappers.CustomerMapper;
@@ -8,7 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.validation.Path;
 import java.util.UUID;
 
 @Slf4j
