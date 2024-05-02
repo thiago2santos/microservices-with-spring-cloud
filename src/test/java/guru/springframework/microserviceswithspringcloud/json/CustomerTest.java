@@ -2,6 +2,8 @@ package guru.springframework.microserviceswithspringcloud.json;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import guru.springframework.microserviceswithspringcloud.utils.serializers.JsonSerializerExample;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -9,6 +11,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
@@ -34,4 +37,7 @@ public class CustomerTest {
 
     @JsonFormat(shape = JsonFormat.Shape.STRING)
     private Integer age;
+
+    @JsonSerialize(using = JsonSerializerExample.class)
+    private LocalDate deathDate;
 }
