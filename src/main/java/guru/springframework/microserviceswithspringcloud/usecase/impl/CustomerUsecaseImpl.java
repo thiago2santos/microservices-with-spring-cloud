@@ -23,6 +23,7 @@ public class CustomerUsecaseImpl implements CustomerCrudOperations {
 
     @Override
     public CustomerDTO getById(UUID uuid) {
+        log.info("executando getById");
         Customer customer = new Customer(uuid, "Thiago dos Santos");
         CustomerDTO customerDTO = customerMapper.customerToCustomerDTO(customer);
         return customerDTO;
@@ -30,6 +31,7 @@ public class CustomerUsecaseImpl implements CustomerCrudOperations {
 
     @Override
     public CustomerDTO create(CustomerDTO customerDTO) {
+        log.info("Criando um novo cliente.");
         Customer customer = customerMapper.customerDTOToCustomer(customerDTO);
         customer.setUuid(UUID.randomUUID());
         return customerMapper.customerToCustomerDTO(customer);
@@ -37,6 +39,7 @@ public class CustomerUsecaseImpl implements CustomerCrudOperations {
 
     @Override
     public void update(CustomerDTO customerDTO) {
+        log.info("Atualizando um cliente existente.");
         log.info("Customer {} updated. Id: {}", customerDTO.getName(), customerDTO.getUuid());
     }
 
