@@ -25,7 +25,7 @@ public class UpdateCustomerController {
     @PutMapping(value = {"/customers/{uuid}", "/customers/"})
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@RequestBody @Valid CustomerDTO customerDTO, @PathVariable("uuid") UUID uuid) {
-        customerDTO.setUuid(uuid);
+        customerDTO.setCustomerId(uuid);
         customerService.update(customerDTO);
     }
 

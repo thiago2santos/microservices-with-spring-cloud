@@ -16,7 +16,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class CustomerDTO {
     @JsonProperty(value = "id")
-    private UUID uuid;
+    private UUID customerId;
 
     @NotNull
     @Size(min = 3, max = 100)

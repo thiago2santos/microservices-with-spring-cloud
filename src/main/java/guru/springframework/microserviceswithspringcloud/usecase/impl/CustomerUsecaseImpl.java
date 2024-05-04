@@ -33,14 +33,14 @@ public class CustomerUsecaseImpl implements CustomerCrudOperations {
     public CustomerDTO create(CustomerDTO customerDTO) {
         log.info("Criando um novo cliente.");
         Customer customer = customerMapper.customerDTOToCustomer(customerDTO);
-        customer.setUuid(UUID.randomUUID());
+        customer.setCustomerId(UUID.randomUUID());
         return customerMapper.customerToCustomerDTO(customer);
     }
 
     @Override
     public void update(CustomerDTO customerDTO) {
         log.info("Atualizando um cliente existente.");
-        log.info("Customer {} updated. Id: {}", customerDTO.getName(), customerDTO.getUuid());
+        log.info("Customer {} updated. Id: {}", customerDTO.getName(), customerDTO.getCustomerId());
     }
 
     @Override

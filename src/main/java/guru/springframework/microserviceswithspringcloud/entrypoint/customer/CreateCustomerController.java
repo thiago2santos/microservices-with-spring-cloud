@@ -4,7 +4,6 @@ import guru.springframework.microserviceswithspringcloud.usecase.CustomerCrudOpe
 import guru.springframework.microserviceswithspringcloud.usecase.impl.CustomerUsecaseImpl;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
-import lombok.NoArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +29,7 @@ public class CreateCustomerController {
     public ResponseEntity<CustomerDTO> create(@RequestBody @Valid CustomerDTO customerDTO) {
         CustomerDTO createdCustomer = customerService.create(customerDTO);
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Location", String.format("/api/v1/customers/%s", createdCustomer.getUuid()));
+        headers.add("Location", String.format("/api/v1/customers/%s", createdCustomer.getCustomerId()));
         return new ResponseEntity<>(createdCustomer, headers, HttpStatus.CREATED);
     }
 
