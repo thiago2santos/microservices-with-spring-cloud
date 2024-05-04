@@ -1,6 +1,6 @@
 package guru.springframework.microserviceswithspringcloud.entrypoint.customer;
 
-import com.google.gson.Gson;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,13 +20,13 @@ class UpdateCustomerControllerTest {
     @Autowired
     private MockMvc mvc;
     @Autowired
-    private Gson gson;
+    private ObjectMapper objectMapper;
 
     @Test
     @DisplayName("Cliente deve ser atualizado com sucesso.")
     public void updateCustomerTest() throws Exception {
         CustomerDTO customerDTO = new CustomerDTO(UUID.randomUUID(), "Thiago dos Santos");
-        String requestBody = gson.toJson(customerDTO);
+        String requestBody = objectMapper.writeValueAsString(customerDTO);
 
         mvc.perform(MockMvcRequestBuilders
                         .put("/api/v1/customers/{uuid}", UUID.randomUUID().toString())
@@ -40,7 +40,7 @@ class UpdateCustomerControllerTest {
     @DisplayName("Deve retornar BadRequest se URI Variable ausente.")
     public void missingUriVariableTest() throws Exception {
         CustomerDTO customerDTO = new CustomerDTO(UUID.randomUUID(), "Thiago dos Santos");
-        String requestBody = gson.toJson(customerDTO);
+        String requestBody = objectMapper.writeValueAsString(customerDTO);
 
         mvc.perform(MockMvcRequestBuilders
                         .put("/api/v1/customers/")
@@ -54,7 +54,7 @@ class UpdateCustomerControllerTest {
     @DisplayName("Nome deve ser conter ao menos 3 caracteres.")
     public void badRequestNomePequenoTest() throws Exception {
         CustomerDTO customerDTO = CustomerDTO.builder().name("Th").build();
-        String requestBody = gson.toJson(customerDTO);
+        String requestBody = objectMapper.writeValueAsString(customerDTO);
 
         mvc.perform(MockMvcRequestBuilders
                         .put("/api/v1/customers/{uuid}", UUID.randomUUID().toString())
@@ -70,7 +70,7 @@ class UpdateCustomerControllerTest {
         CustomerDTO customerDTO = CustomerDTO.builder()
                 .name("Kubishka Valeriya Kasyanovna (Кубышка Валерия Касьяновна) Kubishka Valeriya Kasyanovna (Кубышка Валерия Касьяновна)")
                 .build();
-        String requestBody = gson.toJson(customerDTO);
+        String requestBody = objectMapper.writeValueAsString(customerDTO);
 
         mvc.perform(MockMvcRequestBuilders
                         .put("/api/v1/customers/{uuid}", UUID.randomUUID().toString())

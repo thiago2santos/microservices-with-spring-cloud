@@ -1,6 +1,6 @@
 package guru.springframework.microserviceswithspringcloud.entrypoint.customer;
 
-import com.google.gson.Gson;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,14 +17,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class CreateCustomerControllerTest {
     @Autowired
     private MockMvc mvc;
+
     @Autowired
-    private Gson gson;
+    private ObjectMapper objectMapper;
 
     @Test
     @DisplayName("Cliente deve ser cadastrado com sucesso.")
     public void createCustomer() throws Exception {
         CustomerDTO customerDTO = CustomerDTO.builder().name("Thiago dos Santos").build();
-        String requestBody = gson.toJson(customerDTO);
+        String requestBody = objectMapper.writeValueAsString(customerDTO);
         mvc.perform(MockMvcRequestBuilders
                         .post("/api/v1/customers")
                         .content(requestBody)
@@ -37,7 +38,7 @@ class CreateCustomerControllerTest {
     @DisplayName("Nome deve ser conter ao menos 3 caracteres.")
     public void badRequestNomePequenoTest() throws Exception {
         CustomerDTO customerDTO = CustomerDTO.builder().name("Th").build();
-        String requestBody = gson.toJson(customerDTO);
+        String requestBody = objectMapper.writeValueAsString(customerDTO);
         mvc.perform(MockMvcRequestBuilders
                         .post("/api/v1/customers")
                         .content(requestBody)
@@ -53,7 +54,7 @@ class CreateCustomerControllerTest {
         CustomerDTO customerDTO = CustomerDTO.builder()
                 .name("Kubishka Valeriya Kasyanovna (Кубышка Валерия Касьяновна) Kubishka Valeriya Kasyanovna (Кубышка Валерия Касьяновна)")
                 .build();
-        String requestBody = gson.toJson(customerDTO);
+        String requestBody = objectMapper.writeValueAsString(customerDTO);
         mvc.perform(MockMvcRequestBuilders
                         .post("/api/v1/customers")
                         .content(requestBody)
