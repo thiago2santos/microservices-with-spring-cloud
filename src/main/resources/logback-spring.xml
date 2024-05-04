@@ -1,17 +1,14 @@
-<configuration>
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <Pattern>%d{HH:mm:ss.SSS} %-5level [%msg] %logger{36} [%thread]%n</Pattern>
+        </encoder>
+    </appender>
 
-    <springProfile name="default">
-        <include resource="org/springframework/boot/logging/logback/base.xml"/>
-    </springProfile>
+    <logger name="br.com.runningcode.logging" level="debug"/>
 
-    <springProfile name="json-logs">
-        <appender name="jsonConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
-            <encoder class="net.logstash.logback.encoder.LogstashEncoder"/>
-        </appender>
-
-        <root level="INFO">
-            <appender-ref ref="jsonConsoleAppender"/>
-        </root>
-    </springProfile>
-
+    <root level="INFO">
+        <appender-ref ref="STDOUT"/>
+    </root>
 </configuration>
