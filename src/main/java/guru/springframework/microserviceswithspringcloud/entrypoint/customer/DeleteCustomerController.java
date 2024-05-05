@@ -24,7 +24,6 @@ public class DeleteCustomerController {
     @DeleteMapping(value = {"/customers/{uuid}", "/customers/"})
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable("uuid") UUID uuid) {
-
         customerService.delete(uuid);
     }
 

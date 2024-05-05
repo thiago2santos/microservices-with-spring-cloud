@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.UUID;
 
 @Validated
@@ -23,6 +24,12 @@ public class FindCustomerController {
 
     public FindCustomerController(CustomerUsecaseImpl customerService) {
         this.customerService = customerService;
+    }
+
+    @GetMapping(value = {"/customers"})
+    public ResponseEntity<List<CustomerDTO>> findAll() {
+        List<CustomerDTO> customerDTOList = customerService.findAll();
+        return ResponseEntity.ok(customerDTOList);
     }
 
     @GetMapping(value = {"/customers/{uuid}", "/customers/"})
