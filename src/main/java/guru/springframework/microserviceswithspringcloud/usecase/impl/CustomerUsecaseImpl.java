@@ -6,6 +6,7 @@ import guru.springframework.microserviceswithspringcloud.repository.CustomerRepo
 import guru.springframework.microserviceswithspringcloud.usecase.CustomerCrudOperations;
 import guru.springframework.microserviceswithspringcloud.utils.mappers.CustomerMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,6 +31,7 @@ public class CustomerUsecaseImpl implements CustomerCrudOperations {
     }
 
     @Override
+    @Cacheable(cacheNames = "customers")
     public CustomerDTO getById(UUID uuid) {
         log.info("executando getById");
         Customer customer = customerRepository.getReferenceById(uuid);
